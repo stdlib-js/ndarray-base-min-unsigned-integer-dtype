@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2024 The Stdlib Authors.
@@ -16,45 +16,34 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
 
-var UINT8_MAX = require( '@stdlib/constants-uint8-max' );
-var UINT16_MAX = require( '@stdlib/constants-uint16-max' );
-var UINT32_MAX = require( '@stdlib/constants-uint32-max' );
+import { UnsignedIntegerDataType } from '@stdlib/types/ndarray';
 
-
-// MAIN //
+/**
+* Output data type.
+*/
+type DataType = UnsignedIntegerDataType | 'float64';
 
 /**
 * Returns the minimum ndarray data type for storing a provided unsigned integer value.
 *
-* @param {uinteger} value - scalar value
-* @returns {string} ndarray data type
+* @param value - scalar value
+* @returns ndarray data type
 *
 * @example
-* var dt = minUnsignedIntegerDataType( 9999 );
+* var dt = minUnsignedIntegerDataType( 1280 );
 * // returns 'uint16'
 *
 * @example
 * var dt = minUnsignedIntegerDataType( 3 );
 * // returns 'uint8'
 */
-function minUnsignedIntegerDataType( value ) { // eslint-disable-line id-length
-	if ( value <= UINT8_MAX ) {
-		return 'uint8';
-	}
-	if ( value <= UINT16_MAX ) {
-		return 'uint16';
-	}
-	if ( value <= UINT32_MAX ) {
-		return 'uint32';
-	}
-	return 'float64';
-}
+declare function minUnsignedIntegerDataType( value: number ): DataType;
 
 
 // EXPORTS //
 
-module.exports = minUnsignedIntegerDataType;
+export = minUnsignedIntegerDataType;
